@@ -123,4 +123,7 @@ Sitemize kullanıcı girişi yaptıktan sonra da alışverişinize devam etmeniz
 
 Sizler için sitemizin kısa bir tanıtım videosu. Umarım beğenirsiniz. :)
 
+https://www.youtube.com/watch?v=2fs9jrBiOAg
+
+![Ekran görüntüsü 2025-01-24 230538](https://github.com/user-attachments/assets/b59bd18e-5e2a-4384-98be-0cba4a71fb4c)
 
