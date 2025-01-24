@@ -23,28 +23,22 @@ public class PlakController : Controller
 
     if (sortOrder == "asc")
     {
-        plaklar = plaklar.OrderBy(g => g.fiyat); // Artan fiyat sıralaması
+        plaklar = plaklar.OrderBy(g => g.fiyat); 
     }
     else if (sortOrder == "desc")
     {
-        plaklar = plaklar.OrderByDescending(g => g.fiyat); // Azalan fiyat sıralaması
+        plaklar = plaklar.OrderByDescending(g => g.fiyat); 
     }
 
     return View(plaklar.ToList());
-        // var gitar=_context.gitarlar.ToList();
-        // return View(gitar);
     }
 
-    // public IActionResult Plak(){       // ürün listele
-    //     var pl=_context.plaklar.ToList();
-    //     return View(pl);
-    // }
     public IActionResult Kayit(){
         return View();
     }
     [HttpPost]
     public IActionResult Kayit(Plak pl, IFormFile Resim)
-    {  // kaydet
+    {  
         if (Resim != null && Resim.Length > 0)
         {
             var dosyaAdi = Path.GetFileName(Resim.FileName);
@@ -91,7 +85,6 @@ public class PlakController : Controller
         return RedirectToAction("Plak");
     }
 
-    // Gitar Silme
     [HttpPost]
     [Authorize(Policy = "AdminOnly")]
     public IActionResult Sil(int id)

@@ -24,23 +24,17 @@ public class KalimbaController : Controller
 
         if (sortOrder == "asc")
         {
-            kalimbalar = kalimbalar.OrderBy(g => g.fiyat); // Artan fiyat sıralaması
+            kalimbalar = kalimbalar.OrderBy(g => g.fiyat); 
         }
         else if (sortOrder == "desc")
         {
-            kalimbalar = kalimbalar.OrderByDescending(g => g.fiyat); // Azalan fiyat sıralaması
+            kalimbalar = kalimbalar.OrderByDescending(g => g.fiyat); 
         }
 
         return View(kalimbalar.ToList());
-        // var gitar=_context.gitarlar.ToList();
-        // return View(gitar);
+
     }
 
-    // public IActionResult Kalimba()
-    // {      
-    //     var k=_context.kalimbalar.ToList();
-    //     return View(k);
-    // }
     public IActionResult Kayit()
     {
         return View();

@@ -24,22 +24,17 @@ public class KemanController : Controller
 
         if (sortOrder == "asc")
         {
-            kemanlar = kemanlar.OrderBy(g => g.fiyat); // Artan fiyat sıralaması
+            kemanlar = kemanlar.OrderBy(g => g.fiyat); 
         }
         else if (sortOrder == "desc")
         {
-            kemanlar = kemanlar.OrderByDescending(g => g.fiyat); // Azalan fiyat sıralaması
+            kemanlar = kemanlar.OrderByDescending(g => g.fiyat); 
         }
 
         return View(kemanlar.ToList());
-        // var gitar=_context.gitarlar.ToList();
-        // return View(gitar);
-    }
+        
+     }
 
-    // public IActionResult Keman(){       // ürün listele
-    //     var keman=_context.kemanlar.ToList();
-    //     return View(keman);
-    // }
     public IActionResult Kayit()
     {
         return View();
@@ -48,7 +43,7 @@ public class KemanController : Controller
     [Authorize(Policy = "AdminOnly")]
 
     public IActionResult Kayit(Keman keman, IFormFile Resim)
-    {  // kaydet
+    {  
         if (Resim != null && Resim.Length > 0)
         {
             var dosyaAdi = Path.GetFileName(Resim.FileName);
@@ -65,7 +60,7 @@ public class KemanController : Controller
             _context.kemanlar.Add(keman);
             _context.SaveChanges();
         }
-        //return RedirectToAction("Keman");
+        
         return View();
     }
     [HttpPost]
@@ -96,7 +91,7 @@ public class KemanController : Controller
         return RedirectToAction("Keman");
     }
 
-    // Gitar Silme
+    
     [HttpPost]
     [Authorize(Policy = "AdminOnly")]
     public IActionResult Sil(int id)

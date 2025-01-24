@@ -27,34 +27,23 @@ public class KullaniciController : Controller
     {
         if (ModelState.IsValid)
         {
-            // Veritabanında hiç kullanıcı yoksa, ilk kullanıcıyı admin yap
             if (!_context.kullanicilar.Any())
             {
-                kullanici.rol = "Admin"; // İlk kullanıcı Admin olacak
+                kullanici.rol = "Admin"; 
             }
             else
             {
-                kullanici.rol = "User"; // Diğer tüm kullanıcılar "User" olacak
+                kullanici.rol = "User"; 
             }
 
-            // Kullanıcıyı veritabanına ekle
             _context.kullanicilar.Add(kullanici);
             _context.SaveChanges();
             TempData["Success"] = "Kayıt başarılı! Şimdi giriş yapabilirsiniz.";
             return RedirectToAction("Giris");
         }
         return View(kullanici);
-        // if (ModelState.IsValid)
-        // {
-        //     _context.kullanicilar.Add(kullanici);
-        //     _context.SaveChanges();
-        //     TempData["Success"] = "Kayıt başarılı! Şimdi giriş yapabilirsiniz.";
-        //     return RedirectToAction("Giris");
-        // }
-        // return View(kullanici);
     }
 
-    // Giriş Sayfası
     public IActionResult Giris()
     {
         return View();
@@ -78,26 +67,13 @@ u.parola == sifre);
             TempData["UserName"] = user.isim;
             if (user.rol == "Admin")
             {
-                return RedirectToAction("AdminAnaSayfa", "Admin"); // Admin controller ve methodu oluşturmalısın.
+                return RedirectToAction("AdminAnaSayfa", "Admin"); 
             }
             return RedirectToAction("AnaSayfa", "Home");
         }
         ViewBag.Error = "Kullanıcı adı veya parola hatalı.";
         return View();
     }
-    //     var user = _context.kullanicilar.FirstOrDefault(u => u.mail == email && u.parola == sifre);
-    //     if (user != null)
-    //     {
-    //         HttpContext.Session.SetString("UserEmail", user.mail);
-    //         TempData["Success"] = $"Hoş geldiniz, {user.isim}!";
-    //         return RedirectToAction("AnaSayfa", "Home");
-    //     }
-
-    //     TempData["Error"] = "E-posta veya şifre hatalı!";
-    //     return View();
-    // }
-
-    // Çıkış
 
     [Authorize]
     public IActionResult Cikis()
@@ -105,9 +81,5 @@ u.parola == sifre);
 
         HttpContext.SignOutAsync("CookieAuth");
         return RedirectToAction("AnaSayfa", "Home");
-        //     HttpContext.Session.Remove("UserEmail");
-        //     TempData["Success"] = "Başarıyla çıkış yaptınız.";
-        //     return RedirectToAction("Giris");
-        // }
     }
 }

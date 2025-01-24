@@ -138,7 +138,6 @@
             object-fit: cover;
         }
 
-        /* Hover efektini düzenleyelim, sadece resim büyüyecek */
         .slider-item:hover {
             transform: scale(1.05);
         }
@@ -242,9 +241,7 @@
 
         .card:hover {
             transform: scale(1.05);
-            /* Kartları büyütme efekti */
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-            /* Kartın etrafında daha belirgin gölge */
         }
 
         .card:hover .overlay {
@@ -265,26 +262,20 @@
 
         .product-card img {
             transition: none;
-            /* Fotoğraf üzerinde herhangi bir geçiş efekti olmayacak */
             transform: none;
-            /* Fotoğraf büyütmesi sıfırlanacak */
             object-fit: cover;
-            /* Fotoğrafın doğru şekilde sığması için */
         }
 
         .product-card:hover img {
             transform: none;
-            /* Hover durumunda fotoğraf büyümemeli */
         }
 
-        /* Kart hover efekti */
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             background-color: #f8f9fa;
         }
 
-        /* Sepete Ekle butonu */
         .add-to-cart {
             display: none;
             transition: all 0.3s ease;
@@ -377,33 +368,23 @@
         footer {
 
             background-color: #222;
-            /* Arka plan rengi */
             color: aliceblue;
-            /* Yazı rengi */
             padding: 20px 0;
-            /* Üst-alt boşluk */
             height: 320px;
         }
 
         .footer-content {
             display: flex;
-            /* İçeriği yan yana hizalamak için flexbox */
             justify-content: space-between;
-            /* İçerikler arasında boşluk bırak */
             align-items: center;
-            /* Dikey hizalama */
             max-width: 1200px;
-            /* Maksimum genişlik */
             margin: 20px auto;
-            /* Ortalamak için */
             padding: 0 20px;
-            /* İçeriği kenarlardan uzaklaştır */
         }
 
         .sections {
             display: flex;
             gap: 50px;
-            /* Sol ve sağdaki bölümler arasında boşluk */
         }
 
         .sections div h4 {
@@ -432,12 +413,10 @@
 
         .sections ul li a i {
             margin-right: 10px;
-            /* İkonla yazı arasında boşluk */
         }
 
         .qr-code {
             text-align: center;
-            /* QR kodu ve başlığı ortala */
         }
 
         .qr-code h4 {
@@ -448,23 +427,18 @@
         .qr-code img {
             margin: 5px;
             width: 150px;
-            /* QR kod genişliği */
             height: 150px;
-            /* QR kod yüksekliği */
         }
 
         .footer-bottom {
             text-align: center;
-            /* Yatay ortalama */
             margin-top: 20px;
             font-size: 14px;
             line-height: 1.5;
-            /* Satır yüksekliği */
         }
 
         .footer-bottom p {
             margin: 5px 0;
-            /* Yazılar arasında boşluk */
         }
 
         .add-to-cart {
@@ -482,13 +456,11 @@
             opacity: 0;
             width: 100px;
             height: 40px;
-            /* Başlangıçta buton görünmez */
             transition: opacity 0.3s, transform 0.3s;
         }
 
         .product-card:hover .add-to-cart {
             opacity: 1;
-            /* Hover ile buton görünür olur */
             transform: translateY(-10px);
         }
 
@@ -496,7 +468,6 @@
             opacity: 1;
         }
 
-        /* Favori ikonu için stil */
         .favorite-icon {
             position: absolute;
             bottom: 25px;
@@ -510,16 +481,12 @@
 
         .favorite-icon:hover {
             color: red;
-            /* Hoverda kalp rengi değişecek */
             transform: scale(1.2);
-            /* Hoverda kalp büyüyecek */
         }
 
         .favorite-icon.active {
             color: red;
-            /* Kalp pembe renkte olacak */
             transform: scale(1.2);
-            /* Hafif büyümüş halde kalacak */
         }
     </style>
 </head>
@@ -712,7 +679,7 @@
     <script>
         function scrollSlider(direction, sliderSelector) {
             const slider = document.querySelector(sliderSelector);
-            const scrollAmount = direction * 300; // Adjust scroll amount as needed
+            const scrollAmount = direction * 300; 
             slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
 
@@ -722,24 +689,21 @@
                 icon.classList.toggle('active');
             });
         }); const sliderWrapper = document.querySelector('.slider-wrapper');
-        const videos = document.querySelectorAll('video'); // Videoları seç
+        const videos = document.querySelectorAll('video'); 
         const dots = document.querySelectorAll('.slider-dots .dot');
         let currentIndex = 0;
 
-        // Videolar arasında geçiş
         function slideTo(index) {
-            sliderWrapper.style.transform = `translateX(-${index * 33.3}%)`; // Sadece bir video genişliği kadar kaydır
+            sliderWrapper.style.transform = `translateX(-${index * 33.3}%)`; 
             dots.forEach(dot => dot.classList.remove('active'));
             dots[index].classList.add('active');
         }
 
-        // Otomatik geçiş
         setInterval(() => {
-            currentIndex = (currentIndex + 1) % videos.length; // Videoların toplam sayısına göre hesapla
+            currentIndex = (currentIndex + 1) % videos.length; 
             slideTo(currentIndex);
-        }, 10000); // Her 10 saniyede bir geçiş yap
+        }, 10000); 
 
-        // Dotlara tıklama işlevi
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 currentIndex = index;

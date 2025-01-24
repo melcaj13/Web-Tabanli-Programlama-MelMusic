@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plak İşlemleri</title>
     <style>
-        /* Genel stil */
         body {
             background: linear-gradient(to bottom, rgba(152, 8, 80, 1), rgba(0, 0, 0, 1));
             color: #333;
@@ -78,7 +77,6 @@
             min-height: 100px;
         }
 
-        /* Genel buton stili */
         button[type="submit"] {
             padding: 12px 0;
             border-radius: 5px;
@@ -93,7 +91,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Kaydet butonu */
         .btn-primary {
             background-color: greenyellow;
         }
@@ -102,7 +99,6 @@
             background-color: green;
         }
 
-        /* Düzenle butonu */
         .edit-button {
             background-color: #f0ad4e;
         }
@@ -111,7 +107,6 @@
             background-color: #ec971f;
         }
 
-        /* Silme butonu */
         .delete-button {
             background-color: #d9534f;
         }
@@ -127,7 +122,6 @@
     <h2>Plak Ekle - Düzenle - Sil</h2>
 
     <div class="form-container">
-        <!-- Plak Ekle Formu -->
         <form asp-action="Kayit" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="isim">Plak İsmi</label>
@@ -148,7 +142,6 @@
             <button type="submit" class="btn-primary">Kaydet</button>
         </form>
 
-        <!-- Plak Düzenle Formu -->
         <form asp-action="Guncelle" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="id">Plak ID</label>
@@ -173,7 +166,6 @@
             <button type="submit" class="edit-button">Düzenle</button>
         </form>
 
-        <!-- Plak Silme Formu -->
         <form asp-action="Sil" method="post">
             <div class="form-group">
                 <label for="id">Plak ID</label>

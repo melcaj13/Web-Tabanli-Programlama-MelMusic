@@ -22,28 +22,22 @@ public class UkuleleController : Controller
 
     if (sortOrder == "asc")
     {
-        ukuleleler = ukuleleler.OrderBy(g => g.fiyat); // Artan fiyat sıralaması
+        ukuleleler = ukuleleler.OrderBy(g => g.fiyat); 
     }
     else if (sortOrder == "desc")
     {
-        ukuleleler = ukuleleler.OrderByDescending(g => g.fiyat); // Azalan fiyat sıralaması
+        ukuleleler = ukuleleler.OrderByDescending(g => g.fiyat); 
     }
 
     return View(ukuleleler.ToList());
-        // var gitar=_context.gitarlar.ToList();
-        // return View(gitar);
     }
 
-    // public IActionResult Ukulele(){       // ürün listele
-    //     var u=_context.ukuleleler.ToList();
-    //     return View(u);
-    // }
     public IActionResult Kayit(){
         return View();
     }
     [HttpPost]
     public IActionResult Kayit(Ukulele u, IFormFile Resim)
-    {  // kaydet
+    {  
         if (Resim != null && Resim.Length > 0)
         {
             var dosyaAdi = Path.GetFileName(Resim.FileName);
@@ -90,7 +84,6 @@ public class UkuleleController : Controller
         return RedirectToAction("Ukulele");
     }
 
-    // Gitar Silme
     [HttpPost]
     [Authorize(Policy = "AdminOnly")]
     public IActionResult Sil(int id)

@@ -43,7 +43,6 @@
             transform: scale(1.2);
         }
 
-        /* Kategori alt başlıkları */
         .filter-option ul {
             display: none;
             position: absolute;
@@ -71,16 +70,12 @@
 
         .filter-option a {
             color: #fff;
-            /* Varsayılan renk beyaz */
             text-decoration: none;
-            /* Alt çizgiyi kaldır */
             transition: color 0.3s, text-decoration 0.3s;
-            /* Yumuşak geçiş */
         }
 
         .filter-option a:hover {
             color: #ffd700;
-            /* Hoverda sarı renk */
         }
 
         .search-bar {
@@ -136,14 +131,12 @@
             box-shadow: 5px 5px 15px  rgba(152, 8, 80, 1);
         }
 
-        /* Ürün görseli */
         .product-image {
             width: 100%;
             height: 375px;
             object-fit: cover;
         }
 
-        /* Ürün bilgileri */
         .product-details {
             padding: 10px;
         }
@@ -158,7 +151,6 @@
             color: #ddd;
         }
 
-        /* Ürün alt kısmı (fiyat ve sepete ekle butonu) */
         .product-footer {
             display: flex;
             justify-content: space-between;
@@ -185,18 +177,14 @@
             bottom: 10px;
             right: 10px;
             opacity: 0;
-            /* Başlangıçta buton görünmez */
             transition: opacity 0.3s, transform 0.3s;
         }
 
         .product-card:hover .add-to-cart {
             opacity: 1;
-            /* Hover ile buton görünür olur */
             transform: translateY(-10px);
-            /* Hoverda buton biraz yukarı kayar */
         }
 
-        /* Mobil uyumlu */
         @@media (max-width: 768px) {
             .product-container {
                 flex-direction: column;
@@ -204,7 +192,6 @@
             }
         }
 
-        /* Favori ikonu için stil */
         .favorite-icon {
             position: absolute;
             top: 10px;
@@ -217,15 +204,11 @@
 
         .favorite-icon:hover {
             color: rgba(152, 8, 80, 1);
-            /* Hoverda kalp rengi değişecek */
             transform: scale(1.2);
-            /* Hoverda kalp büyüyecek */
         }
         .favorite-icon.active {
     color: rgba(152, 8, 80, 1);
-    /* Kalp pembe renkte olacak */
     transform: scale(1.2);
-    /* Hafif büyümüş halde kalacak */
 }
               
          footer {
@@ -306,7 +289,6 @@
         }
 
 
-        /* Diğer mevcut stil kodları burada kalacak */
     </style>
 </head>
 

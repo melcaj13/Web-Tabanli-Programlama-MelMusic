@@ -22,28 +22,22 @@ public class MizikaController : Controller
 
     if (sortOrder == "asc")
     {
-        mizikalar = mizikalar.OrderBy(g => g.fiyat); // Artan fiyat sıralaması
+        mizikalar = mizikalar.OrderBy(g => g.fiyat); 
     }
     else if (sortOrder == "desc")
     {
-        mizikalar = mizikalar.OrderByDescending(g => g.fiyat); // Azalan fiyat sıralaması
+        mizikalar = mizikalar.OrderByDescending(g => g.fiyat); 
     }
 
     return View(mizikalar.ToList());
-        // var gitar=_context.gitarlar.ToList();
-        // return View(gitar);
     }
 
-    // public IActionResult Mizika(){       // ürün listele
-    //     var m=_context.mizikalar.ToList();
-    //     return View(m);
-    // }
     public IActionResult Kayit(){
         return View();
     }
     [HttpPost]
     public IActionResult Kayit(Mizika m, IFormFile Resim)
-    {  // kaydet
+    {  
         if (Resim != null && Resim.Length > 0)
         {
             var dosyaAdi = Path.GetFileName(Resim.FileName);
@@ -90,7 +84,7 @@ public class MizikaController : Controller
         return RedirectToAction("Mizika");
     }
 
-    // Gitar Silme
+   
     [HttpPost]
     [Authorize(Policy = "AdminOnly")]
     public IActionResult Sil(int id)

@@ -23,28 +23,22 @@ public class PiyanoController : Controller
 
     if (sortOrder == "asc")
     {
-        piyanolar = piyanolar.OrderBy(g => g.fiyat); // Artan fiyat sıralaması
+        piyanolar = piyanolar.OrderBy(g => g.fiyat); 
     }
     else if (sortOrder == "desc")
     {
-        piyanolar = piyanolar.OrderByDescending(g => g.fiyat); // Azalan fiyat sıralaması
+        piyanolar = piyanolar.OrderByDescending(g => g.fiyat); 
     }
 
     return View(piyanolar.ToList());
-        // var gitar=_context.gitarlar.ToList();
-        // return View(gitar);
     }
 
-    // public IActionResult Piyano(){       
-    //     var piyano=_context.piyanolar.ToList();
-    //     return View(piyano);
-    // }
     public IActionResult Kayit(){
         return View();
     }
     [HttpPost]
     public IActionResult Kayit(Piyano p, IFormFile Resim)
-    {  // kaydet
+    {  
         if (Resim != null && Resim.Length > 0)
         {
             var dosyaAdi = Path.GetFileName(Resim.FileName);
@@ -91,7 +85,6 @@ public class PiyanoController : Controller
         return RedirectToAction("Piyano");
     }
 
-    // Gitar Silme
     [HttpPost]
     [Authorize(Policy = "AdminOnly")]
     public IActionResult Sil(int id)

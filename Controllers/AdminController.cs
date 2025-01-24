@@ -19,6 +19,6 @@ public class AdminController : Controller
     [Authorize(Roles = "Admin")]
     public IActionResult AdminAnaSayfa()
     {
-        return View(); // Admin sayfası içeriği
+        return View(); 
     }
 }
