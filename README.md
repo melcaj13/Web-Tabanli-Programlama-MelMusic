@@ -18,7 +18,7 @@ Web sitesine giriş yapıldığında sizi ana sayfamız karşılıyor. Üst kıs
 
 
 
-Ana sayfamızın devamında Çok Satan ve Kampanyalı ürünlerimizi görüntüleyebilir, favoriye ekleyebilir ve isterseniz direk sepetinize ekleyebilirsiniz.
+Ana sayfamızın devamında Çok Satan ve Kampanyalı ürünlerimizi görüntüleyebilir, favoriye ve isterseniz direk sepetinize ekleyebilirsiniz.
 
 
 ![Ekran görüntüsü 2025-01-22 234055](https://github.com/user-attachments/assets/24c7fa2e-fefc-4dbb-95b2-7516008c12e5)
@@ -44,7 +44,7 @@ Sayfamızın alt kısmında da göze hitap edecek şekilde yapılmış ürünler
 
 
 
-Alt kısımda footerımız bulunuyor. Hızlı erişim linkleri sayesinde sayfanın sonunda olsanız bile kolaylıkla istediğiniz sayfaya kolaylıkla geçiş yapabilirsiniz.
+Alt kısımda footerımız bulunuyor. Hızlı erişim linkleri sayesinde sayfanın sonunda olsanız bile istediğiniz sayfaya kolaylıkla geçiş yapabilirsiniz.
 
 
 ![Ekran görüntüsü 2025-01-24 233922](https://github.com/user-attachments/assets/d9c606f0-2ea1-4678-9d96-e055ddf8e3bb)
@@ -53,7 +53,7 @@ Alt kısımda footerımız bulunuyor. Hızlı erişim linkleri sayesinde sayfan�
 HAKKIMIZDA SAYFASI
 
 
-Hakkımızda sayfasında bize dair merak ettikleriniz ve eğer ulaşmak isterseniz, kolaylıkla bize mail gönderebileceğiniz bir kısım mevcut.
+Hakkımızda sayfasında bize dair merak ettikleriniz ve eğer ulaşmak isterseniz, bize mail gönderebileceğiniz bir kısım mevcut.
 
 ![screencapture-localhost-5235-Home-Hakkimizda-2025-01-24-00_36_32](https://github.com/user-attachments/assets/7451b89e-9ce0-46d5-836d-ec409c89f580)
 
@@ -62,7 +62,7 @@ Hakkımızda sayfasında bize dair merak ettikleriniz ve eğer ulaşmak istersen
 ÜRÜNLER SAYFASI
 
 
-Ve şık tasarımıyla ürünler sayfamız. Kolaylıkla kategori seçimi, fiyat sıralaması yapabileceğiniz bir filtreleme ve arama çubuğumuz. İsterseniz sitemizdeki tüm ürünleri görüntüleyebilir, ya da sadece ilgilendiğiniz ürünleri görebilirsiniz.
+Ve şık tasarımıyla ürünler sayfamız. Kolaylıkla kategori seçimi, fiyat sıralaması yapabileceğiniz bir filtreleme ve arama çubuğumuz var. İsterseniz sitemizdeki tüm ürünleri görüntüleyebilir, ya da sadece ilgilendiğiniz ürünleri inceleyebilirsiniz.
 
 
 Tüm ürünler
@@ -97,7 +97,7 @@ Kayıt olmak için
 YÖNETİCİ PANELİ
 
 
-Site yönetimi içinse yalnızca admin girişiyle erişilebilen bir sayfamız mevcut. Sisteme admin olarak giriş yaptığınızda ürünler için ekleme, düzenleme ve silme işlemleri yapabilirsiniz. Kolaylık olması ve onlarca ürünün karışmaması için her kategoriye ait ürünün kendine özel işlemleri mevcuttur.
+Site yönetimi içinse yalnızca admin girişiyle erişilebilen bir sayfamız mevcut. Sisteme admin olarak giriş yaptığınızda ürünler için ekleme, düzenleme ve silme işlemleri yapabilirsiniz. Kolay olması ve ürünlerin karışmaması için her kategoriye ait ürünün kendine özel işlemleri mevcuttur.
 
 ![Ekran görüntüsü 2025-01-24 003422](https://github.com/user-attachments/assets/737226f0-a8ea-4db6-a762-d5af05295bd8)
 
