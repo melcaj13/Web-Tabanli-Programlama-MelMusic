@@ -1,0 +1,289 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@{
+    var currentUser = User.Identity;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cam Navbar - Mel Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: Twinkle Star;
+            flex: 1;
+        }
+
+        nav {
+            z-index: 10;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background-color:rgba(255, 255, 255, 0);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .menu-left {
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+
+        nav .menu-left li {
+            list-style: none;
+            position: relative;
+        }
+
+        nav .menu-left li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+
+        nav .menu-left li a:hover {
+            color: #ffd700;
+        }
+
+        nav .menu-left li ul {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background:black;
+            backdrop-filter: blur(30px);
+            border-radius: 10px;
+            display: none;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .menu-left li ul li {
+            width: 150px;
+            text-align: left;
+            padding: 5px 15px;
+
+        }
+
+        nav .menu-left li ul li a {
+            font-size: 1.1rem;
+        }
+
+        nav .menu-left li:hover ul {
+            display: block;
+        }
+
+        nav .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        nav .right-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav .right-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.03rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+
+        nav .right-menu a:hover {
+            color: #ffd700;
+        }
+
+        main {
+            flex: 1;
+            /* İçeriği dinamik olarak genişletir */
+        }
+
+        /* Sayfanın En Üstüne Çık Butonu */
+        #topButton {
+            position: fixed; /* Buton her zaman görünür */
+            bottom: 20px; /* Alt kenardan uzaklık */
+            right: 20px; /* Sağ kenardan uzaklık */
+            background-color: black; /* Mor renk */
+            color: #fff; /* Yazı rengi beyaz */
+            border: none;
+            border-radius: 50%; /* Yuvarlak buton */
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Hafif gölge */
+            cursor: pointer;
+            opacity: 0; /* Başlangıçta görünmez */
+            transition: opacity 0.3s, transform 0.3s; /* Yumuşak geçiş */
+            z-index: 1000; /* Diğer elemanların üzerinde */
+        }
+
+        #topButton:hover {
+            transform: scale(1.1); /* Üzerine gelince büyüsün */
+            background-color: rgba(152, 8, 80, 1);
+; /* Daha koyu mor */
+        }
+
+        #topButton.show {
+            opacity: 1; /* Görünür yap */
+        }
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Aradaki boşluk */
+    position: relative; /* Alt menü için konumlandırma */
+}
+.user-menu :hover{color: #ffd700;}
+
+/* "Hoş geldiniz" yazısının hover efekti */
+.user-menu span {
+    font-size: 1.1rem;
+    color: #fff;
+    position: relative;
+}
+
+.user-menu .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: black;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    display: none;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-menu .dropdown-content li {
+    padding: 5px 15px;
+    list-style: none;
+}
+
+.user-menu .dropdown-content li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.user-menu .dropdown-content li a:hover {
+    color:#ffd700;
+}
+
+.user-menu:hover .dropdown-content {
+    display: block;
+}
+
+    </style>
+</head>
+
+<body>
+    <nav>
+    <ul class="menu-left">
+        <li><a asp-controller="Home" asp-action="AnaSayfa"><i class="fa fa-home"></i> Ana Sayfa</a></li>
+        <li><a asp-controller="Home" asp-action="Hakkimizda"><i class="fa fa-info-circle"></i> Hakkımızda</a></li>
+        <li>
+            <a asp-controller="Home" asp-action="TumUrunler"><i class="fa fa-music"></i> Ürünler</a>
+            <ul>
+                <li><a asp-controller="Gitar" asp-action="Gitar"> Gitar</a></li>
+                <li><a asp-controller="Keman" asp-action="Keman">Keman</a></li>
+                <li><a asp-controller="Piyano" asp-action="Piyano"> Piyano</a></li>
+                <li><a asp-controller="Plak" asp-action="Plak">Plak</a></li>
+                <li><a asp-controller="Kalimba" asp-action="Kalimba">Kalimba</a></li>
+                <li><a asp-controller="Ukulele" asp-action="Ukulele">Ukulele</a></li>
+                <li><a asp-controller="Mizika" asp-action="Mizika">Mızıka</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div style="font-family: Lucida Handwriting;">
+        <a style="color: white; font-size:1.8rem; text-decoration:none;" asp-controller="Home" asp-action="AnaSayfa">Mel Music</a>
+    </div>
+   
+<div class="right-menu">
+    @if (currentUser.IsAuthenticated)
+    {
+        <div class="user-menu">
+            <span>Hoş geldin, @currentUser.Name</span>
+            <div class="dropdown">
+                <a href="#"> <i class="fa fa-chevron-down"></i> </a>
+                <ul class="dropdown-content">
+                    <li><a asp-controller="Kullanici" asp-action="Cikis"><i class="fa fa-sign-out-alt"></i> Çıkış Yap</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-controller="Admin" asp-action="AdminAnaSayfa"><i class="fa fa-home"></i> Admin Ana Sayfa</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <a asp-controller="Kullanici" asp-action="Giris"><i class="fa fa-sign-in-alt"></i> Giriş Yap</a>
+    }
+    <a href="#"><i class="fa fa-heart"></i> Favoriler</a>
+    <a href="#"><i class="fa fa-shopping-cart"></i> Sepet</a>
+</div>
+
+</nav>
+
+<button id="topButton" onclick="scrollToTop()">⮝</button>
+
+    <main>
+        <!-- Sayfa içeriği buraya gelecek -->
+        @RenderBody() <!-- Dinamik içerik -->
+    </main>
+</body>
+<script>// Butonu Göster ve Gizle
+    window.onscroll = function() {
+        const topButton = document.getElementById("topButton");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            topButton.classList.add("show");
+        } else {
+            topButton.classList.remove("show");
+        }
+    };
+    // Sayfanın En Üstüne Animasyonlu Git
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Yumuşak kaydırma
+        });
+}
+</script>
+</html> 

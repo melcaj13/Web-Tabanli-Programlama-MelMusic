@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: rgb(203, 191, 191);
+            margin-top: 100px;
+        }
+
+        .product-container {            margin-bottom: 40px;
+
+            margin-left: 40px;
+            margin-right: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+        }
+
+        .product-card {
+            background: linear-gradient(to bottom, rgba(152, 8, 80, 1), rgba(152, 8, 80, 1), rgba(0, 0, 0, 1));
+            width: 330px;
+            height: 530px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 5px 5px 15px  rgba(152, 8, 80, 1);
+        }
+
+        /* Ürün görseli */
+        .product-image {
+            width: 100%;
+            height: 375px;
+            object-fit: cover;
+        }
+
+        /* Ürün bilgileri */
+        .product-details {
+            padding: 15px;
+        }
+
+        .product-details h4 {
+            font-size: 15px;
+            color: #fff;
+        }
+
+        .product-details p {
+            font-size: 10px;
+            color: #ddd;
+        }
+
+        /* Ürün alt kısmı (fiyat ve sepete ekle butonu) */
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .price {
+            font-size: 17px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .add-to-cart {
+                                    height: 30px;
+            width: 100px;
+
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0;
+            /* Başlangıçta buton görünmez */
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .product-card:hover .add-to-cart {
+            opacity: 1;
+            /* Hover ile buton görünür olur */
+            transform: translateY(-10px);
+            /* Hoverda buton biraz yukarı kayar */
+        }
+
+        /* Mobil uyumlu */
+        @@media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Favori ikonu için stil */
+        .favorite-icon {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 28px;
+            color: #bbb;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .favorite-icon:hover {
+            color: rgba(152, 8, 80, 1);
+            /* Hoverda kalp rengi değişecek */
+            transform: scale(1.2);
+            /* Hoverda kalp büyüyecek */
+        }          .filter-bar {
+            border-radius: 10px;
+            margin-left: 80px;
+            margin-right: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(152, 8, 80, 1), rgba(0, 0, 0, 1));
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-options {
+            z-index: 10;
+            display: flex;
+        }
+
+        .filter-option {
+            position: relative;
+            margin: 0 20px;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .filter-option:hover {
+            color: #ffd700;
+            transform: scale(1.2);
+        }
+
+        /* Kategori alt başlıkları */
+        .filter-option ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            list-style: none;
+        }
+
+        .filter-option:hover ul {
+            display: block;
+        }
+
+        .filter-option ul li {
+            color: white;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        .filter-option ul li:hover {
+            color: #ffd700;
+        }
+
+        .filter-option a {
+            color: #fff;
+            /* Varsayılan renk beyaz */
+            text-decoration: none;
+            /* Alt çizgiyi kaldır */
+            transition: color 0.3s, text-decoration 0.3s;
+            /* Yumuşak geçiş */
+        }
+
+        .filter-option a:hover {
+            color: #ffd700;
+            /* Hoverda sarı renk */
+        }
+
+        .search-bar {
+            margin-right:30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            width: 250px;
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            box-shadow: 0 0 10px white;
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 10px;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+
+<body>        <div class="filter-bar">
+        <div class="filter-options">
+            <div class="filter-option">
+                Filtrele
+                <ul>
+                    <li>Fiyata Göre</li>
+                    <li>Markaya Göre</li>
+                    <li>Renk</li>
+                </ul>
+            </div>
+            <div class="filter-option">
+                Sırala
+                <ul>
+                <li><a href="@Url.Action("Mizika", "Mizika", new { sortOrder = "asc" })">Artan Fiyat</a></li>
+                <li><a href="@Url.Action("Mizika", "Mizika", new { sortOrder = "desc" })">Azalan Fiyat</a></li>
+                       </div>
+            <div class="filter-option">
+                <a asp-controller="Home" asp-action="TumUrunler">Tüm Ürünler</a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Arama yapın...">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+
+
+    <div class="product-container">
+        @foreach (var gitar in Model)
+        {
+            <div class="product-card">
+                <div class="favorite-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <img src="@gitar.resim" alt="Gitar Resmi" class="product-image" />
+                <div class="product-details">
+                    <center>
+                        <h4>@gitar.isim</h4>
+                    </center><br>
+                    <center>
+                        <p>@gitar.aciklama</p>
+                    </center>
+                    <div class="product-footer">
+                        <span class="price">@gitar.fiyat.ToString("C")</span>
+                        <button class="add-to-cart">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    
+</body>
+
+</html>

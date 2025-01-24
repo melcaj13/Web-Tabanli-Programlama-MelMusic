@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda | Fa-Re Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #222;
+            color: #fff;
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        header .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(152, 8, 80, 0.8));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        header .overlay h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            color:linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(152, 8, 80, 0.8));
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .section .button {
+            background:linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(152, 8, 80, 0.8));
+            color: #fff;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .section .button:hover {
+            background: black;
+        }
+
+        .team {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            background: #444;
+            width: 250px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .team-member p {
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #222;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #bbb;
+        }
+
+        a {
+            text-decoration: none;
+            color: #980850;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #9b4de5;
+        }
+        footer {
+
+            background-color: #222;
+            /* Arka plan rengi */
+            color: aliceblue;
+            /* Yazı rengi */
+            padding: 20px 0;
+            /* Üst-alt boşluk */
+            height: 320px;
+        }
+
+        .footer-content {
+            display: flex;
+            /* İçeriği yan yana hizalamak için flexbox */
+            justify-content: space-between;
+            /* İçerikler arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama */
+            max-width: 1200px;
+            /* Maksimum genişlik */
+            margin: 20px auto;
+            /* Ortalamak için */
+            padding: 0 20px;
+            /* İçeriği kenarlardan uzaklaştır */
+        }
+
+        .sections {
+            display: flex;
+            gap: 50px;
+            /* Sol ve sağdaki bölümler arasında boşluk */
+        }
+
+        .sections div h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .sections ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sections ul li {
+            margin-bottom: 5px;
+        }
+
+        .sections ul li a {
+            color: aliceblue;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sections ul li a i {
+            margin-right: 10px;
+            /* İkonla yazı arasında boşluk */
+        }
+
+        .qr-code {
+            text-align: center;
+            /* QR kodu ve başlığı ortala */
+        }
+
+        .qr-code h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .qr-code img {
+            margin: 5px;
+            width: 150px;
+            /* QR kod genişliği */
+            height: 150px;
+            /* QR kod yüksekliği */
+        }
+
+        .footer-bottom {
+            text-align: center;
+            /* Yatay ortalama */
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            /* Satır yüksekliği */
+        }
+
+        .footer-bottom p {
+            margin: 5px 0;
+            /* Yazılar arasında boşluk */
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="/images/hk.jpg" alt="Fa-Re Music Banner">
+        <div class="overlay">
+            <h1 style="font-family: Lucida Handwriting;">Mel Music</h1>
+        </div>
+    </header>
+
+    <div class="section">
+        <h2>Hakkımızda</h2>
+        <p>Mel Music olarak müzik dünyasına adım atmış her bireye kaliteli ürünler ve unutulmaz bir deneyim sunmayı amaçlıyoruz. Sadece enstrüman satışı yapmakla kalmıyor, aynı zamanda müziği yaşam tarzı haline getirenlere rehberlik ediyoruz. Her yaştan ve her seviyeden müzik tutkununun ihtiyaçlarına hitap eden geniş bir ürün yelpazemiz bulunuyor.</p>
+        <p>Müziğin gücüne inanıyor ve her bireyin hayatına dokunarak, daha renkli bir dünya yaratmak için çalışıyoruz. En kaliteli enstrümanları, uygun fiyatlarla ve güvenli alışveriş imkanlarıyla sizlere sunuyoruz.</p>
+        <a href="#" class="button">Daha Fazla</a>
+    </div>
+
+    <div class="section">
+        <h2>Mağazamız</h2><br>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="/images/magaza1.jpg" alt="Mağaza 1">
+            </div>
+            <div class="gallery-item">
+                <img src="/images/magaza2.jpg" alt="Mağaza 2">
+            </div>
+            <div class="gallery-item">
+                <img src="/images/magaza3.jpg" alt="Mağaza 3">
+            </div>
+            <div class="gallery-item">
+                <img src="/images/magaza4.jpg" alt="Mağaza 3">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Ekibimiz</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="/images/team-member4.jpg" alt="Ali Yılmaz">
+                <h3>Ali Yılmaz</h3>
+                <p>Kurucu & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="/images/team-member3.jpg" alt="Ayşe Demir">
+                <h3>Ayşe Demir</h3>
+                <p>Pazarlama Müdürü</p>
+            </div>
+            <div class="team-member">
+                <img src="/images/team-member2.jpg" alt="Ahmet Kaya">
+                <h3>Ahmet Kaya</h3>
+                <p>Satın Alma Sorumlusu</p>
+            </div>
+        </div>
+    </div>
+<header>
+    <div class="overlay">
+        <div class="section">
+    <h1>Bize Ulaşın</h1>
+    <br>
+    <p>Mel Music olarak müzikle ilgili her türlü sorunuz için bizimle iletişime geçebilirsiniz. Size yardımcı olmaktan mutluluk duyarız.</p>
+    
+    <form action="#" method="post" style="max-width: 600px; margin: 0 auto;">
+        <div style="margin-bottom: 15px;">
+            <label for="name" style="font-size: 1.1rem; color: #bbb;">Adınız</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-top: 5px; background: #444; color: #fff; border: none; border-radius: 5px; ">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="email" style="font-size: 1.1rem; color: #bbb;">E-posta Adresiniz</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-top: 5px; background: #444; color: #fff; border: none; border-radius: 5px;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="message" style="font-size: 1.1rem; color: #bbb;">Mesajınız</label>
+            <textarea id="message" name="message" required rows="5" style="width: 100%; padding: 10px; margin-top: 5px; background: #444; color: #fff; border: none; border-radius: 5px;"></textarea>
+        </div>
+
+        <button type="submit" class="button" style="background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(152, 8, 80, 0.8)); border-radius: 50px; padding: 12px 40px; font-size: 1rem;">Gönder</button>
+    </form>
+</div>
+
+    </div>
+</header>
+    <footer style="background-color: #222; color: aliceblue;">
+        <div class="footer-content">
+            <div class="sections">
+                <div>
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="AnaSayfa"><i class="fa fa-home"></i> Ana Sayfa</a></li>
+                        <li><a asp-controller="Home" asp-action="Hakkimizda"><i class="fa fa-info-circle"></i>
+                                Hakkımızda</a></li>
+                        <li><a asp-controller="Home" asp-action="TumUrunler"><i class="fa fa-music"></i> Ürünler</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>İletişim</h4>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-envelope"></i> info@melmusic.com</a></li>
+                        <li><a href="#"><i class="fa fa-phone"></i> +90 555 123 45 67</a></li>
+                        <li><a href="#"><i class="fa fa-map-marker-alt"></i> Bursa, Türkiye</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qr-code">
+                <h4>Mobil Uygulamamızı İndirin</h4>
+                <img src="/images/indir.png"
+                    alt="QR Kod">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mel Music | Tüm Hakları Saklıdır.</p>
+            <p> Özlüce Mahallesi, Fetih Caddesi No: 55, Osmangazi, Bursa</p>
+
+        </div>
+    </footer>
+
+
+</body>
+
+</html> 

@@ -1,0 +1,188 @@
+@model MelMusic.Models.Keman
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keman İşlemleri</title>
+    <style>
+        /* Genel stil */
+        body {
+            background: linear-gradient(to bottom, rgba(152, 8, 80, 1), rgba(0, 0, 0, 1));
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h2 {
+            margin-top: 90px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            gap: 20px;
+        }
+
+        .form-container form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+            border-color: #6a0dad;
+            box-shadow: 0 0 5px rgba(106, 13, 173, 0.5);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Genel buton stili */
+        button[type="submit"] {
+            padding: 12px 0;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Kaydet butonu */
+        .btn-primary {
+            background-color: greenyellow;
+        }
+
+        .btn-primary:hover {
+            background-color: green;
+        }
+
+        /* Düzenle butonu */
+        .edit-button {
+            background-color: #f0ad4e;
+        }
+
+        .edit-button:hover {
+            background-color: #ec971f;
+        }
+
+        /* Silme butonu */
+        .delete-button {
+            background-color: #d9534f;
+        }
+
+        .delete-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Keman Ekle - Düzenle - Sil</h2>
+
+    <div class="form-container">
+        <!-- Keman Ekle Formu -->
+        <form asp-action="Kayit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="isim">Keman İsmi</label>
+                <input type="text" id="isim" name="isim" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="fiyat">Fiyat</label>
+                <input type="number" id="fiyat" name="fiyat" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="aciklama">Açıklama</label>
+                <textarea id="aciklama" name="aciklama" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="resim">Resim</label>
+                <input type="file" id="resim" name="resim" class="form-control" accept="image/*" />
+            </div>
+            <button type="submit" class="btn-primary">Kaydet</button>
+        </form>
+
+        <!-- Keman Düzenle Formu -->
+        <form asp-action="Guncelle" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="id">Keman ID</label>
+                <input type="text" id="id" name="id" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label for="isim">Keman İsmi</label>
+                <input type="text" id="isim" name="isim" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="fiyat">Fiyat</label>
+                <input type="number" id="fiyat" name="fiyat" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="aciklama">Açıklama</label>
+                <textarea id="aciklama" name="aciklama" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="resim">Resim</label>
+                <input type="file" id="resim" name="resim" class="form-control" accept="image/*" />
+            </div>
+            <button type="submit" class="edit-button">Düzenle</button>
+        </form>
+
+        <!-- Keman Silme Formu -->
+        <form asp-action="Sil" method="post">
+            <div class="form-group">
+                <label for="id">Keman ID</label>
+                <input type="text" id="id" name="id" class="form-control" required />
+            </div>
+            <button type="submit" class="delete-button">Sil</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

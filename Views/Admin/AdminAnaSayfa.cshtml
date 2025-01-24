@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            height: 300px;
+            padding: 20px;
+            background-color: black;
+            color: rgba(152, 8, 80, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h3 {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: rgba(152, 8, 80, 1);
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            /* Bağlantının altını çizer */
+            color: black;
+            /* Yazı rengini mor yapar */
+            font-size: 1.4rem;
+            /* Yazı boyutunu büyütür */
+            transition: color 0.3s ease;
+            /* Hover için geçiş efekti */
+        }
+
+        a:hover {
+            color: rgba(152, 8, 80, 1);
+            /* Hover durumunda renk değişir */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Yönetici Paneli</h1>
+    <div>
+        <h3>Ürün Yönetimi</h3>
+        <ul style="font-weight: bolder;">
+            <li><a href="@Url.Action("Kayit", "Kalimba")">Kalimba </a></li>
+            <li><a href="@Url.Action("Kayit", "Ukulele")">Ukulele </a></li>
+            <li><a href="@Url.Action("Kayit", "Gitar")">Gitar </a></li>
+            <li><a href="@Url.Action("Kayit", "Piyano")">Piyano </a></li>
+            <li><a href="@Url.Action("Kayit", "Keman")">Keman </a></li>
+            <li><a href="@Url.Action("Kayit", "Plak")">Plak </a></li>
+            <li><a href="@Url.Action("Kayit", "Mizika")">Mızıka </a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

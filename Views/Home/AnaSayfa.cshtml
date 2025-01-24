@@ -1,0 +1,755 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fa-Re Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .video-slider {
+            position: relative;
+            width: 100%;
+            height: 750px;
+            overflow: hidden;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .overlay-video h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .buttonnn {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.4rem;
+            transition: background-color 0.3s;
+        }
+
+        .buttonnn:hover {
+            background-color: #ffd700;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .slider-dots .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-dots .dot.active {
+            background-color: #ffd700;
+        }
+
+        .slider-container {
+            width: 90%;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .slider-container h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: black;
+        }
+
+        .slider {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 400px;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hover efektini düzenleyelim, sadece resim büyüyecek */
+        .slider-item:hover {
+            transform: scale(1.05);
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .slider-nav button {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slider-nav button:hover {
+            background-color: rgba(152, 8, 80, 1);
+            ;
+        }
+
+        .dıscontainer {
+            background: linear-gradient(45deg, rgba(0, 0, 0, 1), rgba(152, 8, 80, 1));
+            width: 100%;
+            height: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1800px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            transition: all 400ms;
+            margin: 50px auto;
+        }
+
+        .card {
+            border-radius: 30px;
+            flex: 1;
+            height: 100%;
+            transition: all 400ms;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .card>img {
+            border-radius: 30px;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card:nth-child(odd) {
+            transform: translate(0, -20px);
+        }
+
+        .card:nth-child(even) {
+            transform: translate(0, 20px);
+        }
+
+        .container:hover .card:not(:hover) {
+            filter: grayscale(100%);
+        }
+
+        .card:hover {
+            flex: 3;
+        }
+
+        .card .overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            color: transparent;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #fff;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .card:hover .overlay {
+            color: white;
+            text-shadow: 0 0 20px #fff, 0 0 30px #fff;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            /* Kartları büyütme efekti */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            /* Kartın etrafında daha belirgin gölge */
+        }
+
+        .card:hover .overlay {
+            color: white;
+            text-shadow: 0 0 20px #fff, 0 0 30px #fff;
+        }
+
+        .product-card {
+            padding: 10px;
+            margin: 45px;
+            border: 2.4px solid black;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .product-card img {
+            transition: none;
+            /* Fotoğraf üzerinde herhangi bir geçiş efekti olmayacak */
+            transform: none;
+            /* Fotoğraf büyütmesi sıfırlanacak */
+            object-fit: cover;
+            /* Fotoğrafın doğru şekilde sığması için */
+        }
+
+        .product-card:hover img {
+            transform: none;
+            /* Hover durumunda fotoğraf büyümemeli */
+        }
+
+        /* Kart hover efekti */
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background-color: #f8f9fa;
+        }
+
+        /* Sepete Ekle butonu */
+        .add-to-cart {
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .add-to-cart {
+            display: inline-block;
+        }
+
+        .price {
+            font-size: 1.2em;
+            color: red;
+            font-weight: bold;
+        }
+
+        .gallery-container {
+            height: 800px;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 1), rgba(152, 8, 80, 1));
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            margin-top: 50px;
+            height: 650px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h2 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .overlay p {
+            margin: 5px 0 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .overlay a {
+            background-color: black;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .overlay a:hover {
+            background-color: rgba(152, 8, 80, 1);
+        }
+
+        footer {
+
+            background-color: #222;
+            /* Arka plan rengi */
+            color: aliceblue;
+            /* Yazı rengi */
+            padding: 20px 0;
+            /* Üst-alt boşluk */
+            height: 320px;
+        }
+
+        .footer-content {
+            display: flex;
+            /* İçeriği yan yana hizalamak için flexbox */
+            justify-content: space-between;
+            /* İçerikler arasında boşluk bırak */
+            align-items: center;
+            /* Dikey hizalama */
+            max-width: 1200px;
+            /* Maksimum genişlik */
+            margin: 20px auto;
+            /* Ortalamak için */
+            padding: 0 20px;
+            /* İçeriği kenarlardan uzaklaştır */
+        }
+
+        .sections {
+            display: flex;
+            gap: 50px;
+            /* Sol ve sağdaki bölümler arasında boşluk */
+        }
+
+        .sections div h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .sections ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sections ul li {
+            margin-bottom: 5px;
+        }
+
+        .sections ul li a {
+            color: aliceblue;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sections ul li a i {
+            margin-right: 10px;
+            /* İkonla yazı arasında boşluk */
+        }
+
+        .qr-code {
+            text-align: center;
+            /* QR kodu ve başlığı ortala */
+        }
+
+        .qr-code h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .qr-code img {
+            margin: 5px;
+            width: 150px;
+            /* QR kod genişliği */
+            height: 150px;
+            /* QR kod yüksekliği */
+        }
+
+        .footer-bottom {
+            text-align: center;
+            /* Yatay ortalama */
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            /* Satır yüksekliği */
+        }
+
+        .footer-bottom p {
+            margin: 5px 0;
+            /* Yazılar arasında boşluk */
+        }
+
+        .add-to-cart {
+            font-family: Twinkle Star;
+            font-size: medium;
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            opacity: 0;
+            width: 100px;
+            height: 40px;
+            /* Başlangıçta buton görünmez */
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .product-card:hover .add-to-cart {
+            opacity: 1;
+            /* Hover ile buton görünür olur */
+            transform: translateY(-10px);
+        }
+
+        .product-card:hover .favorite-icon {
+            opacity: 1;
+        }
+
+        /* Favori ikonu için stil */
+        .favorite-icon {
+            position: absolute;
+            bottom: 25px;
+            left: 120px;
+            font-size: 24px;
+            color: #bbb;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            opacity: 0;
+        }
+
+        .favorite-icon:hover {
+            color: red;
+            /* Hoverda kalp rengi değişecek */
+            transform: scale(1.2);
+            /* Hoverda kalp büyüyecek */
+        }
+
+        .favorite-icon.active {
+            color: red;
+            /* Kalp pembe renkte olacak */
+            transform: scale(1.2);
+            /* Hafif büyümüş halde kalacak */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-slider">
+        <div class="slider-wrapper">
+            <div class="slide">
+                <video autoplay muted loop>
+                    <source src="/images/bb.mp4" type="video/mp4">
+                </video>
+                <div class="overlay-video">
+                    <h2>Mel-Music' e Hoşgeldiniz! Ürünlerimizle Tanışın</h2><br><br>
+                    <a asp-controller="Home" asp-action="TumUrunler" class="buttonnn">Alışverişe Başla</a>
+                </div>
+            </div>
+            <div class="slide">
+                <video autoplay muted loop>
+                    <source src="/images/ab.mp4" type="video/mp4">
+                </video>
+                <div class="overlay-video">
+                    <h2>Ruhunuza Dokunan Melodiler İçin</h2><br><br>
+                    <a asp-controller="Gitar" asp-action="Gitar" class="buttonnn">Gitarlarımıza Göz Atın</a>
+                </div>
+            </div>
+            <div class="slide">
+                <video autoplay muted loop>
+                    <source src="/images/ac.mp4" type="video/mp4">
+                </video>
+                <div class="overlay-video">
+                    <h2>Dünyaca Ünlü Markalar</h2><br><br>
+                    <a asp-controller="Keman" asp-action="Keman" class="buttonnn">Kemanlarımızı Keşfedin</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <a asp-controller="Gitar" asp-action="Kayit"></a>
+
+    <div class="slider-container">
+        <h2>🔥 ÇOK SATANLAR 🔥</h2>
+        <div class="slider" id="slider1" style="background-color: white; ">
+            @foreach (var gitar in Model.Gitarlar)
+            {
+                <div class="product-card" style="width: 15rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@gitar.isim</h5>
+                        <p class="card-text">@gitar.aciklama</p><br>
+                        <p class="price">@gitar.fiyat.ToString("C")</p>
+                        <img src="@gitar.resim" alt="@gitar.isim">
+
+                        <button class="add-to-cart">Sepete Ekle</button>
+                        <div class="favorite-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="slider-nav">
+            <button onclick="scrollSlider(-2, '#slider1')">&#10094;</button>
+            <button onclick="scrollSlider(2, '#slider1')">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-item">
+            <img src="/images/j.jpg" alt="Gitarlar">
+            <div class="overlay">
+                <h2>Kalimbalar</h2>
+                <p> </p>
+                <a asp-controller="Kalimba" asp-action="Kalimba">Tüm Kalimbalar</a>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="/images/hu.jpg" alt="Akordeonlar">
+            <div class="overlay">
+                <h2>Ürünler</h2>
+                <p>Gitar - Keman - Piyano </p>
+                <a asp-controller="Home" asp-action="TumUrunler">Tüm Ürünler</a>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="/images/hjkl.jpg" alt="Yaylı Çalgılar">
+            <div class="overlay">
+                <h2>Ukuleleler</h2>
+                <p> </p>
+                <a asp-controller="Ukulele" asp-action="Ukulele">Tüm Ukuleleler</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="slider-container">
+        <h2>✨ KAMPANYALI ÜRÜNLER ✨</h2>
+        <div class="slider" id="slider2">
+            @foreach (var gitar in Model.Ukuleleler)
+            {
+                <div class="product-card" style="width: 15rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@gitar.isim</h5>
+                        <p class="card-text">@gitar.aciklama</p><br>
+                        <p class="price">@gitar.fiyat.ToString("C")</p>
+
+                        <img src="@gitar.resim" alt="@gitar.isim">
+
+                        <button class="btn btn-danger add-to-cart">Sepete Ekle</button>
+                        <div class="favorite-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="slider-nav">
+            <button onclick="scrollSlider(-2, '#slider2')">&#10094;</button>
+            <button onclick="scrollSlider(2, '#slider2')">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="dıscontainer">
+        <div class="container">
+            <div class="card">
+                <img src="/images/aa.jpg" onclick="window.location.href='@Url.Action("Gitar", "Gitar")'">
+                <p class="overlay" onclick="window.location.href='@Url.Action("Gitar", "Gitar")'">GİTARLAR</p>
+            </div>
+            <div class="card">
+                <img src="/images/zz.jpg" onclick="window.location.href='@Url.Action("Plak", "Plak")'">
+                <p class="overlay" onclick="window.location.href='@Url.Action("Plak", "Plak")'">PLAKLAR</p>
+            </div>
+            <div class="card">
+                <img src="/images/s.jpg" onclick="window.location.href='@Url.Action("Mizika", "Mizika")'">
+                <P class="overlay" onclick="window.location.href='@Url.Action("Mizika", "Mizika")'">MIZIKALAR</P>
+            </div>
+            <div class="card">
+                <img src="/images/bg.jpg" onclick="window.location.href='@Url.Action("Piyano", "Piyano")'">
+                <P class="overlay" onclick="window.location.href='@Url.Action("Piyano", "Piyano")'">PİYANOLAR</P>
+            </div>
+            <div class="card">
+                <img src="/images/o.jpg" onclick="window.location.href='@Url.Action("Keman", "Keman")'">
+                <P class="overlay" onclick="window.location.href='@Url.Action("Keman", "Keman")'">KEMANLAR</P>
+            </div>
+        </div>
+    </div>
+    <footer style="background-color: #222; color: aliceblue;">
+        <div class="footer-content">
+            <div class="sections">
+                <div>
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="AnaSayfa"><i class="fa fa-home"></i> Ana Sayfa</a></li>
+                        <li><a asp-controller="Home" asp-action="Hakkimizda"><i class="fa fa-info-circle"></i>
+                                Hakkımızda</a></li>
+                        <li><a asp-controller="Home" asp-action="TumUrunler"><i class="fa fa-music"></i> Ürünler</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>İletişim</h4>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-envelope"></i> info@melmusic.com</a></li>
+                        <li><a href="#"><i class="fa fa-phone"></i> +90 555 123 45 67</a></li>
+                        <li><a href="#"><i class="fa fa-map-marker-alt"></i> Bursa, Türkiye</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qr-code">
+                <h4>Mobil Uygulamamızı İndirin</h4>
+                <img src="/images/indir.png" alt="QR Kod">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mel Music | Tüm Hakları Saklıdır.</p>
+            <p> Özlüce Mahallesi, Fetih Caddesi No: 55, Osmangazi, Bursa</p>
+
+        </div>
+    </footer>
+
+
+    <script>
+        function scrollSlider(direction, sliderSelector) {
+            const slider = document.querySelector(sliderSelector);
+            const scrollAmount = direction * 300; // Adjust scroll amount as needed
+            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+
+        document.querySelectorAll('.favorite-icon').forEach(icon => {
+            icon.addEventListener('click', () => {
+                icon.classList.toggle('active');
+            });
+        }); const sliderWrapper = document.querySelector('.slider-wrapper');
+        const videos = document.querySelectorAll('video'); // Videoları seç
+        const dots = document.querySelectorAll('.slider-dots .dot');
+        let currentIndex = 0;
+
+        // Videolar arasında geçiş
+        function slideTo(index) {
+            sliderWrapper.style.transform = `translateX(-${index * 33.3}%)`; // Sadece bir video genişliği kadar kaydır
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+
+        // Otomatik geçiş
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % videos.length; // Videoların toplam sayısına göre hesapla
+            slideTo(currentIndex);
+        }, 10000); // Her 10 saniyede bir geçiş yap
+
+        // Dotlara tıklama işlevi
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                slideTo(currentIndex);
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

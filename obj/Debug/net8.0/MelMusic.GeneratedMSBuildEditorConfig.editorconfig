@@ -1,0 +1,115 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MelMusic
+build_property.RootNamespace = MelMusic
+build_property.ProjectDir = C:\Users\melca\Desktop\MVC\MelMusic\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\melca\Desktop\MVC\MelMusic
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Admin/AdminAnaSayfa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5BbmFTYXlmYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Gitar/Gitar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2l0YXJcR2l0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Gitar/Kayit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2l0YXJcS2F5aXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Home/AnaSayfa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbmFTYXlmYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Home/Hakkimizda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIYWtraW1pemRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Home/TumUrunler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUdW1VcnVubGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Kalimba/Kalimba.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FsaW1iYVxLYWxpbWJhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Kalimba/Kayit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FsaW1iYVxLYXlpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Keman/Kayit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2VtYW5cS2F5aXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Keman/Keman.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2VtYW5cS2VtYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Kullanici/Giris.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3VsbGFuaWNpXEdpcmlzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Mizika/Kayit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWl6aWthXEtheWl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Mizika/Mizika.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWl6aWthXE1pemlrYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Piyano/Kayit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGl5YW5vXEtheWl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Piyano/Piyano.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGl5YW5vXFBpeWFuby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Plak/Kayit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxha1xLYXlpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Plak/Plak.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxha1xQbGFrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Ukulele/Kayit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVWt1bGVsZVxLYXlpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Ukulele/Ukulele.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVWt1bGVsZVxVa3VsZWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/melca/Desktop/MVC/MelMusic/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-lpmp8wenp7
